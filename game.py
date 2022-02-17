@@ -18,13 +18,15 @@ FPS = 60
 frame_per_sec = pygame.time.Clock()
 pygame.display.set_caption("Game")
 
+
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('/Users/KhalilAMcFarlane/Desktop/Pitt 2021-22/pygame-test/GitHub/sprites/Enemy.png')
+        self.image = pygame.image.load(
+            '/Users/KhalilAMcFarlane/Desktop/Pitt 2021-22/pygame-test/GitHub/sprites/Enemy.png')
         self.rect = self.image.get_rect()
-        self.rect.center = (random.randint(40, SCREEN_WIDTH-40), 0)
-    
+        self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+
     def move(self):
         self.rect.move_ip(0, 10)
         if self.rect.bottom > 600:
@@ -34,10 +36,12 @@ class Enemy(pygame.sprite.Sprite):
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 
+
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("/Users/KhalilAMcFarlane/Desktop/Pitt 2021-22/pygame-test/GitHub/sprites/Player.png")
+        self.image = pygame.image.load(
+            "/Users/KhalilAMcFarlane/Desktop/Pitt 2021-22/pygame-test/GitHub/sprites/Player.png")
         self.rect = self.image.get_rect()
         self.rect.center = (160, 520)
 
@@ -57,14 +61,15 @@ class Player(pygame.sprite.Sprite):
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 
+
 p1 = Player()
 e1 = Enemy()
 while running:
-     # Did the user click the window close button?
+    # Did the user click the window close button?
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    
+
     p1.update()
     e1.move()
 
